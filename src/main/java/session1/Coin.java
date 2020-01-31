@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.util.Arrays;
+import java.util.Optional;
+
 @ToString
 @AllArgsConstructor
 public enum Coin {
@@ -16,4 +19,8 @@ public enum Coin {
 
 	@Getter
 	private int valueRappen;
+
+	public static Optional<Coin> fromValue(int valueRappen) {
+		return Arrays.stream(values()).filter(c -> c.valueRappen == valueRappen).findFirst();
+	}
 }

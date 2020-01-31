@@ -47,6 +47,7 @@ public class Main {
 				break;
 			}
 			if (paymentProcess.isPaymentComplete()) {
+				System.out.println("Change is " + ChangeCalculator.calculateChange(-paymentProcess.getDebit()));
 				return;
 			}
 		}

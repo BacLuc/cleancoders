@@ -9,13 +9,15 @@ class CoinPaymentProcessTest {
 
 	@Test
 	public void zeroAmount() {
-		assertThat(new CoinPaymentProcess(0).isPaymentComplete(), is(true));
+		CoinPaymentProcess coinPaymentProcess = new CoinPaymentProcess(0);
+		assertThat(coinPaymentProcess.isPaymentComplete(), is(true));
+		assertThat(coinPaymentProcess.getDebit(), is(0));
 	}
 
 	@Test
 	public void paidInOneStep() {
 		CoinPaymentProcess coinPaymentProcess = new CoinPaymentProcess(10);
-
+		assertThat(coinPaymentProcess.getDebit(), is(10));
 		assertThat(coinPaymentProcess.isPaymentComplete(), is(false));
 		coinPaymentProcess.add(Coin.CHF_010);
 		assertThat(coinPaymentProcess.isPaymentComplete(), is(true));
@@ -26,8 +28,10 @@ class CoinPaymentProcessTest {
 		CoinPaymentProcess coinPaymentProcess = new CoinPaymentProcess(20);
 
 		coinPaymentProcess.add(Coin.CHF_010);
+		assertThat(coinPaymentProcess.getDebit(), is(10));
 		assertThat(coinPaymentProcess.isPaymentComplete(), is(false));
 		coinPaymentProcess.add(Coin.CHF_020);
+		assertThat(coinPaymentProcess.getDebit(), is(-10));
 		assertThat(coinPaymentProcess.isPaymentComplete(), is(true));
 	}
 }

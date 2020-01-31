@@ -10,7 +10,11 @@ public class CoinPaymentProcess {
 	}
 
 	public boolean isPaymentComplete() {
-		return insertedRappen >= requiredRappen;
+		return getDebit() <= 0;
+	}
+
+	public int getDebit() {
+		return requiredRappen - insertedRappen;
 	}
 
 	public void add(Coin coin) {
