@@ -13,7 +13,7 @@ public class CoinPaymentProcess {
 		return insertedRappen >= requiredRappen;
 	}
 
-	public void add(int amountRappen) {
-		insertedRappen += amountRappen;
+	public void add(Coin coin) {
+		insertedRappen += coin.getValueRappen();
 	}
 }

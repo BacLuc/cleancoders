@@ -17,30 +17,30 @@ public class Main {
 			switch (s.nextLine()) {
 			case "500":
 				System.out.println("5.- inserted");
-				paymentProcess.add(500);
+				paymentProcess.add(Coin.CHF_500);
 				break;
 			case "200":
 				System.out.println("2.- inserted");
-				paymentProcess.add(200);
+				paymentProcess.add(Coin.CHF_200);
 				break;
 			case "100":
 				System.out.println("1.- inserted");
-				paymentProcess.add(100);
+				paymentProcess.add(Coin.CHF_100);
 				break;
 			case "050":
 			case "50":
 				System.out.println("0.50 inserted");
-				paymentProcess.add(50);
+				paymentProcess.add(Coin.CHF_050);
 				break;
 			case "020":
 			case "20":
 				System.out.println("0.20 inserted");
-				paymentProcess.add(20);
+				paymentProcess.add(Coin.CHF_020);
 				break;
 			case "010":
 			case "10":
 				System.out.println("0.10 inserted");
-				paymentProcess.add(10);
+				paymentProcess.add(Coin.CHF_010);
 				break;
 			default:
 				System.out.println("Command not understood");

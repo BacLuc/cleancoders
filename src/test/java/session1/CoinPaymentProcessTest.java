@@ -14,20 +14,20 @@ class CoinPaymentProcessTest {
 
 	@Test
 	public void paidInOneStep() {
-		CoinPaymentProcess coinPaymentProcess = new CoinPaymentProcess(1);
+		CoinPaymentProcess coinPaymentProcess = new CoinPaymentProcess(10);
 
 		assertThat(coinPaymentProcess.isPaymentComplete(), is(false));
-		coinPaymentProcess.add(1);
+		coinPaymentProcess.add(Coin.CHF_010);
 		assertThat(coinPaymentProcess.isPaymentComplete(), is(true));
 	}
 
 	@Test
 	public void paidInTwoSteps() {
-		CoinPaymentProcess coinPaymentProcess = new CoinPaymentProcess(2);
+		CoinPaymentProcess coinPaymentProcess = new CoinPaymentProcess(20);
 
-		coinPaymentProcess.add(1);
+		coinPaymentProcess.add(Coin.CHF_010);
 		assertThat(coinPaymentProcess.isPaymentComplete(), is(false));
-		coinPaymentProcess.add(1);
+		coinPaymentProcess.add(Coin.CHF_020);
 		assertThat(coinPaymentProcess.isPaymentComplete(), is(true));
 	}
 }
