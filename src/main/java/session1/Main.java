@@ -1,5 +1,7 @@
 package session1;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
@@ -47,7 +49,14 @@ public class Main {
 				break;
 			}
 			if (paymentProcess.isPaymentComplete()) {
-				System.out.println("Change is " + new UnlimitedChangeCalculator().calculateChange(-paymentProcess.getDebit()));
+				System.out.println("Ideal change would be "
+										   + new UnlimitedChangeCalculator().calculateChange(-paymentProcess.getDebit()));
+				System.out.println(
+						"Associal change would be " + new LimitedChangeCalculator(new HashMap<>(Map.of(Coin.CHF_010,
+																									   Integer.MAX_VALUE,
+																									   Coin.CHF_050,
+																									   4))).calculateChange(
+								-paymentProcess.getDebit()));
 				return;
 			}
 		}
