@@ -1,23 +1,27 @@
 package session1;
 
-public class CoinPaymentProcess {
+public class UnlimitedChangePaymentProcess implements PaymentProcess {
 
 	private final int requiredRappen;
 	private int insertedRappen;
 
-	public CoinPaymentProcess(int requiredRappen) {
+	public UnlimitedChangePaymentProcess(int requiredRappen) {
 		this.requiredRappen = requiredRappen;
 	}
 
+	@Override
 	public boolean isPaymentComplete() {
 		return getDebit() <= 0;
 	}
 
+	@Override
 	public int getDebit() {
 		return requiredRappen - insertedRappen;
 	}
 
-	public void add(Coin coin) {
+	@Override
+	public boolean add(Coin coin) {
 		insertedRappen += coin.getValueRappen();
+		return true;
 	}
 }
